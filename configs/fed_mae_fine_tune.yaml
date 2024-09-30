@@ -1,0 +1,128 @@
+# architecture
+arch: vit_base_GDPH_LUNG_Radio_all
+enc_arch: ViTBackbone
+dec_arch: UNETR_decoder
+proj_name: UNETR3D
+run_name: ${proj_name}_${arch}_${dataset}
+wandb_id:
+disable_wandb: True
+
+
+# dataset
+#dataset: lung
+#json_list: 'labeled.json'
+#data_path:
+
+
+
+## dataset
+dataset: lung
+#json_list: 'test.json'
+n_clients: 3
+split_type: split_1
+data_path:
+
+# output
+output_dir:
+log_dir:
+
+# data preprocessing
+space_x: 1
+space_y: 1
+space_z: 1
+a_min: -1024
+a_max: 3072
+b_min: 0.0
+b_max: 1.0
+roi_x: 96
+roi_y: 96
+roi_z: 96
+RandFlipd_prob: 0.2
+RandRotate90d_prob: 0.2
+RandScaleIntensityd_prob: 0.1
+RandShiftIntensityd_prob: 0.1
+infer_overlap: 0.5
+spatial_dim: 3
+num_samples: 2
+
+# trainer
+trainer_name: SegTrainer
+batch_size: 1
+val_batch_size: 1 # per gpu
+start_epoch: 0
+warmup_epochs: 50
+epochs: 600
+workers: 8
+pretrain:
+resume:
+
+
+drop_path: 0.1
+mixup: 0.
+cutmix: 0.
+label_smoothing: 0.
+
+model_name : UNETR3D
+accum_iter : 1
+clients_labeled_with_len: {}
+clients_unlabeled_with_len: {}
+clients_with_len : {}
+dis_cvs_files : []
+proxy_clients : []
+clients_weightes : []
+communication: 50
+clip_grad : None
+E_epoch : 1
+num_local_clients : -1
+save_ckpt_freq : 500
+patch_size: 16
+in_chans: 1
+feature_size: 16
+encoder_embed_dim: 768
+encoder_depth: 12
+encoder_num_heads: 12
+
+
+# loss
+smooth_nr: 0.0
+smooth_dr: 1e-6
+
+# optimizer
+type: adamw
+lr: 4.3e-3
+beta1: 0.9
+beta2: 0.95 #0.999
+weight_decay: 0.05 #1e-5
+layer_decay: 0.75
+
+# logging
+vis_batch_size: 4
+save_freq: 500
+eval_freq: 50
+print_freq: 1
+gpu: 0
+dist_url: # 'tcp://localhost:10001'
+world_size: 1
+multiprocessing_distributed: False
+dist_backend: nccl
+distributed:
+rank: 0
+
+# randomness
+seed:
+
+# debugging
+debug: false
+
+#test
+ts_ratio: 0
+
+#PSR
+cache_dataset: true
+buffer_sizes: 1
+num_sample: 50
+TEMP: 0.5
+CPS_RATIO: 0.25
+SEG_RATIO: 1
+RAMPUP: 120
+num_classes: 2
