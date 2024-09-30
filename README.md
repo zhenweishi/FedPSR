@@ -1,5 +1,5 @@
 
-For the paper "Label-Efficient Transformer-Based Framework with Self-Supervised Strategies for Heterogeneous Lung Tumor Segmentation"
+For the paper "Data-Efficient Federated Semi-Supervised Learning Framework via Pseudo Supervision Refinement Strategy for Lung Tumor Segmentation"
 
 [![](https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png)](https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png)
 
@@ -7,8 +7,8 @@ For the paper "Label-Efficient Transformer-Based Framework with Self-Supervised 
 ### Main Developers
 
 - [Dr. Zhenwei Shi](https://github.com/zhenweishi) <sup/>1, 2
-- Dr. Zhenbing Liu<sup/>2, 3
 - MSc. Weixing Li <sup/>2, 3
+- Dr. Zhenbing Liu<sup/>2, 3
 - [Dr. Chu Han](https://chuhan89.com/) <sup/>1, 2
 - MD. Zaiyi Liu <sup/>1, 2
 
