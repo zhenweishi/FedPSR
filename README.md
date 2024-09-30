@@ -1,30 +1,21 @@
-# SelfMedMAE: Self Pre-training with Masked Autoencoders for Medical Image Analysis
 
-### Preparation
+For the paper "Label-Efficient Transformer-Based Framework with Self-Supervised Strategies for Heterogeneous Lung Tumor Segmentation"
 
-1. Install PyTorch, timm and [MONAI](https://monai.io/index.html).
-3. Download the [BTCV](https://www.synapse.org/#!Synapse:syn3193805/wiki/217752) and [MSD_BraTS](http://medicaldecathlon.com/) data.
-4. Install Wandb for logging and visualizations.
+[![](https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png)](https://user-images.githubusercontent.com/17007301/219617294-a5f38b07-4599-4834-aa7c-96d01299a531.png)
 
-### Stage 1: MAE Pre-Training
-The run scripts are in directory scripts
-```
-python main.py \
-        configs/mae3d_btcv_1gpu.yaml \
-        --mask_ratio=0.125 \
-        --run_name='mae3d_sincos_vit_base_btcv_mr125'
-```
-The default configurations are set in `configs/mae3d_btcv_1gpu.yaml`. You can overwrite the configurations by passing arguments with the corresponding key names through the command line, e.g., `mask_ratio`. We use Wandb to monitor the training process and visualize the masked reconstruction. During the training, the output including checkpoints and Wandb local files are all stored in the specified `output_dir` value in the configurations.
-The core MAE codes locate in `lib/models/mae3d.py`.
 
-### Stage 2: UNETR Fine-tuning
-The run scripts is in directory scripts
-```
-python main.py \
-        configs/unetr_btcv_1gpu.yaml \
-        --lr=3.44e-2 \
-        --batch_size=6 \
-        --run_name=unetr3d_vit_base_btcv_lr3.44e-2_mr125_10ke_pretrain_5000e \
-        --pretrain=$YOUR Pre-Trained MAE Checkpoint$
-```
-The core UNETR codes locate in `lib/models/unetr3d.py`.
+### Main Developers
+
+- [Dr. Zhenwei Shi](https://github.com/zhenweishi) <sup/>1, 2
+- Dr. Zhenbing Liu<sup/>2, 3
+- MSc. Weixing Li <sup/>2, 3
+- [Dr. Chu Han](https://chuhan89.com/) <sup/>1, 2
+- MD. Zaiyi Liu <sup/>1, 2
+
+<sup>1</sup> Department of Radiology, Guangdong Provincial People's Hospital (Guangdong Academy of Medical Sciences), Southern Medical University, China <br/>
+<sup>2</sup> Guangdong Provincial Key Laboratory of Artificial Intelligence in Medical Image Analysis and Application, China <br/>
+<sup>3</sup> School of Computer and Information Security, Guilin University of Electronic Technology, Guilin 541004, China <br/>
+
+### License
+
+The package is freely available to browse, download, and use for scientific and educational purposes as outlined in the [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/)
